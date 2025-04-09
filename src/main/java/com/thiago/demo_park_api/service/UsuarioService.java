@@ -3,6 +3,7 @@ package com.thiago.demo_park_api.service;
 
 import com.thiago.demo_park_api.entity.Usuario;
 import com.thiago.demo_park_api.exception.EntityNotFoundException;
+import com.thiago.demo_park_api.exception.PasswordInvalidException;
 import com.thiago.demo_park_api.exception.UsernameUniqueViolationException;
 import com.thiago.demo_park_api.repository.UsuarioRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,13 +39,13 @@ public class UsuarioService {
     public Usuario editarSenha(Long id, String senhaAtual, String novaSenha, String confirmaSenha) {
         if (!novaSenha.equals(confirmaSenha)) {
 
-            throw new RuntimeException("Nova senha não confere com confirmacão de senha.");
+            throw new PasswordInvalidException(String.format("Nova senha não confere com confirmacão de senha."));
 
         }
         Usuario user = buscarPorId(id);
         if (!user.getPassword().equals(senhaAtual)){
 
-            throw new RuntimeException("Sua senha não confere.");
+            throw new PasswordInvalidException(String.format("Sua senha não confere."));
 
         }
 
