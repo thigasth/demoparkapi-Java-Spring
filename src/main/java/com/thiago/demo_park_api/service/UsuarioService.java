@@ -24,14 +24,14 @@ public class UsuarioService {
         try {
             return usuarioRepository.save(usuario);
         }catch (org.springframework.dao.DataIntegrityViolationException ex) {
-            throw new UsernameUniqueViolationException(String.format("Username {%s} já cadastrado", usuario.getUsername()));
+            throw new UsernameUniqueViolationException(String.format("Username '%s' já cadastrado", usuario.getUsername()));
         }
     }
 
     @Transactional(readOnly = true)
     public Usuario buscarPorId(Long id) {
         return usuarioRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Usuário id=%s não encontrado. ", id))
+                () -> new EntityNotFoundException(String.format("Usuário id=%s não encontrado.", id))
         );
     }
 
@@ -39,13 +39,13 @@ public class UsuarioService {
     public Usuario editarSenha(Long id, String senhaAtual, String novaSenha, String confirmaSenha) {
         if (!novaSenha.equals(confirmaSenha)) {
 
-            throw new PasswordInvalidException(String.format("Nova senha não confere com confirmacão de senha."));
+            throw new PasswordInvalidException("Nova senha não confere com confirmacão de senha.");
 
         }
         Usuario user = buscarPorId(id);
         if (!user.getPassword().equals(senhaAtual)){
 
-            throw new PasswordInvalidException(String.format("Sua senha não confere."));
+            throw new PasswordInvalidException("Sua senha não confere.");
 
         }
 
