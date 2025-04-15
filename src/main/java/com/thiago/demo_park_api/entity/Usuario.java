@@ -48,7 +48,6 @@
         @Column(name = "modificado_por")
         private String modificadoPor;
 
-
         public enum Role {
             ROLE_ADMIN, ROLE_CLIENTE
         }
