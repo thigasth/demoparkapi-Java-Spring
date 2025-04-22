@@ -44,7 +44,7 @@ public class UsuarioIT {
     }
 
     @Test
-    public void createUsuario_ComUsernameIValido_RetornarErrorMessageSatus422() {
+    public void createUsuario_ComUsernameInValido_RetornarErrorMessageSatus422() {
         ErrorMessage responseBody = testClient
                 .post()
                 .uri("/api/v1/usuarios")
