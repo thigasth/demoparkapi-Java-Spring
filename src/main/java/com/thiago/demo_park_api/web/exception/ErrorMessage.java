@@ -15,7 +15,7 @@ import java.util.Map;
 @ToString
 public class ErrorMessage {
 
-    private String patch;
+    private String path;
     private String method;
     private int status;
     private String statusText;
@@ -28,7 +28,7 @@ public class ErrorMessage {
 
     public ErrorMessage(HttpServletRequest request, HttpStatus status, String message) {
 
-        this.patch = request.getRequestURI();
+        this.path = request.getRequestURI();
         this.method = request.getMethod();
         this.status = status.value();
         this.statusText = status.getReasonPhrase();
@@ -38,7 +38,7 @@ public class ErrorMessage {
 
     public ErrorMessage(HttpServletRequest request, HttpStatus status, String message, BindingResult result) {
 
-        this.patch = request.getRequestURI();
+        this.path = request.getRequestURI();
         this.method = request.getMethod();
         this.status = status.value();
         this.statusText = status.getReasonPhrase();
