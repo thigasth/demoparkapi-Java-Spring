@@ -8,19 +8,16 @@ import com.thiago.demo_park_api.service.ClienteService;
 import com.thiago.demo_park_api.service.UsuarioService;
 import com.thiago.demo_park_api.web.dto.ClienteCreateDto;
 import com.thiago.demo_park_api.web.dto.PageableDto;
-import com.thiago.demo_park_api.web.dto.UsuarioResponseDto;
 import com.thiago.demo_park_api.web.dto.mapper.ClienteMapper;
 import com.thiago.demo_park_api.web.dto.ClienteResponseDto;
 import com.thiago.demo_park_api.web.dto.mapper.PageableMapper;
 import com.thiago.demo_park_api.web.exception.ErrorMessage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -32,10 +29,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.Query;
-import java.util.List;
 
 import static io.swagger.v3.oas.annotations.enums.ParameterIn.QUERY;
+
 
 @Tag(name = "Clientes", description = "Contem todas as operacões relativas ao recurso de um cliente")
 @RequiredArgsConstructor
